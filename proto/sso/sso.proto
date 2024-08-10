@@ -8,7 +8,7 @@ service Auth{
   rpc Register (RegisterRequest) returns (RegisterResponse);
   rpc Login (LoginRequest) returns (LoginResponse);
   rpc IsAdmin (IsAdminRequest) returns (IsAdminResponse);
-
+  rpc Find (FindRequest) returns (FindResponse);
 }
 
 message RegisterRequest{
@@ -36,4 +36,18 @@ message IsAdminRequest{
 
 message IsAdminResponse{
   bool is_admin = 1;
+}
+
+message FindRequest{
+  string user_id = 1;
+}
+
+message FindResponse{
+  UserAccount user_account = 1;
+}
+
+message UserAccount{
+  string user_id = 1;
+  string user_name = 2;
+  bytes profile_picture = 3;
 }
